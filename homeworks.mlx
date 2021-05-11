@@ -1,5 +1,7 @@
-%% 1
+%% Homework 1
 disp("Hello, world!")
-%% 2
-
-%% 3
+%% Homework 2
+A = rand(3, 3);
+% A
+fprintf('%f %f %f\n', A');
+%% Homework 3
