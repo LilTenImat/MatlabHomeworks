@@ -103,7 +103,7 @@ v = linspace(-0.5, 0.5, 100);
 X = (1.+V.*cos(0.5*U)).*cos(U);
 Y = (1.+V.*cos(0.5*U)).*sin(U);
 Z = V.*sin(0.5*U);
-plot30(X, Y, Z);
+plot3(X, Y, Z);
 % mesh(X,Y,Z);
 %% 4
 a = 2*pi;
