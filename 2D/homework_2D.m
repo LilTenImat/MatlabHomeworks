@@ -83,3 +83,38 @@ for i = 1:s
     plot(x./i,y./i);
     hold on
 end
+%% 13
+clear 
+syms x
+f = 1/x - 1/(x-1) + 1/(x-2);
+ezplot(f)
+%% 13.2
+clear
+syms x
+f = 2*x/(1+x^2);
+ezplot(f);
+%% 13.3
+clear
+syms x
+f = sqrt(cos(pi*x^2));
+ezplot(f);
+%%  14 лемниската Бернулли
+t = -100:0.1:100;
+a = 3;
+x = a*(t+t.^3)./(t.^4 + 1);
+y = a*(t-t.^3)./(t.^4 + 1); 
+plot(x,y);
+%% Розы Гранди 
+clear
+phi = -2*pi:0.02:2*pi;
+a=1;
+k = 5;
+rho = a*sin(k*phi);
+polar(phi, rho);
+%% нефроида
+clear
+phi = -2*pi:0.02:2*pi;
+r = 1;
+x = 3*r*cos(phi) - r* cos(3*phi);
+y = 3*r*sin(phi) - r* sin(3*phi);
+plot(x,y);

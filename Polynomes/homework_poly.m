@@ -13,27 +13,35 @@ plot(a(1),0., 'r.','LineWidth',400)
 clear
 P = [1, 0.1, 0.2, -0.2, -2, 1];
 r = roots(P);
-x = linspace(-max(abs(r)), max(abs(r)), 100);
+% график
+x = linspace(-max(abs(r)), max(abs(r)), 1000);
 plot(x, polyval(P, x))
+axis equal
 grid on
 hold on
 
 x_0 = 0.5*max(abs(r));
-
+% касательная
 Pdx = polyder(P);
 k = polyval(Pdx, x_0);
 b = polyval(P, x_0) - k * x_0;
 T = [k, b];
 plot(x, polyval(T, x), 'r');
 hold on
-
+%нормаль
 x_1 = -0.5*max(abs(r));
 y_1 = polyval(P,x_1);
 x_2 = x_1 - 1;
 y_2 = y_1 - 1/polyval(Pdx, x_1) * (x_2-x_1);
 line([x_1, x_2], [y_1, y_2], 'Color','green')
 hold on
-
+%окружность с корнями
+rm = max(abs(r'));
+xm = -abs(rm):0.001:abs(rm);
+plot(xm, sqrt(abs(rm).^2 - xm.^2),'m', xm, -sqrt(abs(rm).^2 - xm.^2), 'm');
+for i = r'
+    plot(real(i), imag(i), 'r*');
+end
 %% 3
 clear
 P1 = [2, -3, 4, -5, 6];
@@ -129,7 +137,7 @@ poly2sym(S), ...
 poly2sym(P), ...
 poly2sym(T), ...
 poly2sym(Q), ...
-poly2sym(G));
+poly2sym(G);
 %% 10b
 P = [1 3 1 1 3 1];
 Q = [0 1 2 0 1 2];

@@ -1,9 +1,46 @@
+%% касатальная к пространственной кривой в точке t = 10 
+clear
+t = 0:0.2:20;
+x = cos(t);
+y = sin(t);
+z = t;
+plot3(x, y, z);
+hold on
+xd = -sin(10);
+yd = cos(10);
+zd = 1;
+d1 = [cos(10) - xd cos(10) + xd];
+d2 = [sin(10) - yd sin(10) + yd];
+d3 = [9 11];
+line(d1, d2, d3, 'Color', 'red');
+plot3(cos(10), sin(10), 10,'rO');
+%% нормаль к поверхности (в точках от параметров r=pi,b=pi)
+clear
+r=linspace(-2*pi, 2*pi, 100);
+betta = linspace(-2*pi, 2*pi, 100);
+[R, B] = meshgrid(r, betta);
+p = 1;
+X = R.*cos(B);
+Y = R.*sin(B);
+Z = R.^2 / (2*p);
+mesh(X, Y, Z);
+hold on
+t = -1:0.02:1;
+xd = (t*(pi*pi))+pi;
+yd = t*0;
+zd = pi*pi/2 + t*pi;
+plot3(xd, yd, zd);
 %% 1
 clear
-a = 1;
-b = 1;
-c = 1;
-d = 1;
+a=1;
+b=2;
+c=2;
+d=1;
+x = linspace(-1,1,100);
+y = linspace(-1,1,100);
+[X,Y] = meshgrid(x, y);
+Z = (a*X + b*Y + d)/c;
+mesh(X, Y, Z);
 %% 2a
 clear
 a = 1;
