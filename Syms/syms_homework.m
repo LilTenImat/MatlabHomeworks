@@ -61,6 +61,13 @@ ezplot(y, -7, 7);
 hold on
 stem(-1, 100);
 stem(1, 100);
+dy = diff(y);
+ddy = diff(dy);
+r = solve(dy == 0);
+rr = solve(ddy == 0);
+r = imag(r) == 0;
+rr = imag(rr) ==0;
+disp(r);
 %% 8
 clear 
 syms x;

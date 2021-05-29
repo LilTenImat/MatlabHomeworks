@@ -88,16 +88,14 @@ ezplot(f, -3, 3);
 grid on
 hold on
 
-df = diff(f); 
-e = 1e-5; % 
-xk = (a + b) / 2; 
-yk = subs(f, x, xk);
+df = diff(f); % определяем производную
+e = 1e-5; % Погрешность
+Xkm = (x0+x1)/2; 
+Yo = F(x0);
 k = 0; % счетчик итераций
-while abs(yk) > e 
-    xnk = xk - subs(f, x, xk) / subs(df, x, xk);
-    xk = xnk;
-    yk = subs(f, x, xnk);
+while abs(Yo) > e 
+    Xk = Xkm - F(Xkm)/DF(Xkm);
+    Xkm = Xk;
+    Yo = F(Xk);
     k = k + 1;
 end
-plot(xk, subs(f, x, xk), 'rO');
-text(xk + 0.2, subs(f, x, xk) + 5, string(k) + ' iterations');

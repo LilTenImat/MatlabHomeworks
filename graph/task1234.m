@@ -1,4 +1,4 @@
-t = readtable("data/g_edges.csv");
+t = readtable("g_edges.csv");
 names = unique([string(t.Source);string(t.Target)]);
 gr = zeros(length(names),length(names));
 m = containers.Map(names, 1:size(names));
@@ -24,12 +24,11 @@ plot(g, 'MarkerSize',sizes, 'NodeColor', colors')
 colormap([linspace(0,1,256); zeros(1,256); linspace(1,0,256)]')
 colorbar 
 caxis([min(sizes), max(sizes)])
-
-sixth = sort(sum(gr));
-sixth = sixth(1,length(sixth)-5);
-
-disp(names(find(sum(gr) > sixth)))
-
+%
+[s,i]= sort(g.indegree);
+i = flip(i);
+disp(names(i(1:5)));
+%
 for i = shortestpath(g, m("NED"), m("TYRION"))
     disp(names(i))
 end
